@@ -1,18 +1,13 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, FlatList, Text } from 'react-native';
+import {StyleSheet, View, SectionList, Text } from 'react-native';
 
 const myList = [];
-for(let i = 0; i < 40; i++){
+for(let i = 0; i < 20; i++){
   myList.push({id: i.toString()});
 }
 
 export default class App extends Component {
   componentDidMount(){
-    setTimeout(() => {
-      //this.item.scrollToIndex({index: 20})
-      //this.item.scrollToItem({item: {}})
-      //this.item.scrollToEnd()
-    }, 2000)
   }
 
   keyExtractor(item){
@@ -21,18 +16,23 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style={styles.container} >
-        <FlatList 
-          data={myList}
+      <View  >
+        <SectionList 
+          
           ref={(item) => this.item = item}
           keyExtractor={this.keyExtractor}
-          renderItem={({item}) => <Text>{item.id}</Text>}
+          renderItem={({item}) => <Text style={{backgroundColor: 'lightblue', margin: 5}} >{item.id}</Text>}
 
-          ListEmptyComponent={() => <Text>Nenhum Item</Text>}
-          
-          ListHeaderComponent={() => <Text>TOP</Text>}
-          ItemSeparatorComponent={() => <Text>SEP</Text>}
-          ListFooterComponent={() => <Text>BOTTOM</Text>}
+          sections={
+            [
+              {title: 'TITULO 1', data: myList},
+              {title: 'TITULO 2', data: myList},
+              {title: 'TITULO 3', data: myList},
+            ]
+          }
+
+          stickySectionHeadersEnabled={true}
+          renderSectionHeader={({section: {title}}) => <Text style={{fontWeight: 'bold', backgroundColor: 'salmon'}} >{title}</Text>}
         />
       </View>
     );
