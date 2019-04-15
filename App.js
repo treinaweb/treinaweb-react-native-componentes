@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, SectionList, Text } from 'react-native';
+import {StyleSheet, View, FlatList, Text, RefreshControl } from 'react-native';
 
 const myList = [];
 for(let i = 0; i < 20; i++){
@@ -7,32 +7,45 @@ for(let i = 0; i < 20; i++){
 }
 
 export default class App extends Component {
+  state = {
+    isLoading: false,
+    myList
+  }
+
   componentDidMount(){
+    
   }
 
   keyExtractor(item){
     return item.id;
   }
 
+  update = () => {
+    this.setState({isLoading: true});
+    setTimeout(() => {
+      this.setState({
+        isLoading: false,
+        myList: [
+          {id: '123'},
+          {id: '456'},
+          {id: '789'}
+        ]
+      })
+    }, 5000)
+  }
+
   render() {
+    const {state} = this;
     return (
-      <View  >
-        <SectionList 
-          
+      <View style={styles.container} >
+        <FlatList 
+          data={state.myList}
           ref={(item) => this.item = item}
           keyExtractor={this.keyExtractor}
-          renderItem={({item}) => <Text style={{backgroundColor: 'lightblue', margin: 5}} >{item.id}</Text>}
-
-          sections={
-            [
-              {title: 'TITULO 1', data: myList},
-              {title: 'TITULO 2', data: myList},
-              {title: 'TITULO 3', data: myList},
-            ]
+          renderItem={({item}) => <Text>{item.id}</Text>}
+          refreshControl={
+            <RefreshControl refreshing={state.isLoading} onRefresh={this.update} />
           }
-
-          stickySectionHeadersEnabled={true}
-          renderSectionHeader={({section: {title}}) => <Text style={{fontWeight: 'bold', backgroundColor: 'salmon'}} >{title}</Text>}
         />
       </View>
     );
