@@ -1,20 +1,15 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, StatusBar} from 'react-native';
+import {StyleSheet, View, ActivityIndicator} from 'react-native';
 
 export default class App extends Component {
   componentDidMount(){
-    // StatusBar.setBackgroundColor('red', true);
-    // StatusBar.setHidden(true);
-    // StatusBar.setBarStyle('light-content');
+    
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar 
-          hidden={false}
-          backgroundColor="lightblue"
-          barStyle="dark-content" />
+        <ActivityIndicator size={'large'} color="red" animating={true} />
       </View>
     );
   }
