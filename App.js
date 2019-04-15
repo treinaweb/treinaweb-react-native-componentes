@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, ActivityIndicator} from 'react-native';
+import {StyleSheet, View, ProgressBarAndroid, ProgressViewIOS, Platform } from 'react-native';
 
 export default class App extends Component {
   componentDidMount(){
@@ -9,7 +9,17 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <ActivityIndicator size={'large'} color="red" animating={true} />
+        {
+          ( Platform.OS === 'android' ) ?
+          (<ProgressBarAndroid progress={0.6} 
+            progressTintColor="#0062ac"
+            styleAttr="Horizontal"
+            indeterminate={false}
+             />)
+          :
+          (<ProgressViewIOS progress={0.6}
+            progressTintColor="#0062ac" />)
+        }
       </View>
     );
   }
