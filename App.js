@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, Slider } from 'react-native';
+import {StyleSheet, View, Switch} from 'react-native';
 
 
 export default class App extends Component {
 
   state = {
-    value: 10
+    isActive: false
   }
 
   componentDidMount(){
@@ -16,13 +16,9 @@ export default class App extends Component {
     const {state} = this;
     return (
       <View >
-        <Text>{state.value}</Text>
-        <Slider 
-          onValueChange={(value) => {this.setState({value})}}
-          value={state.state}
-          minimumValue={5} 
-          maximumValue={20} 
-          step={5}  />
+        <Switch 
+          onValueChange={(isActive) => { this.setState({isActive}) }}
+          value={state.isActive}  />
       </View>
     );
   }
