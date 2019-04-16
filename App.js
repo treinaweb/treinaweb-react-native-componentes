@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, TextInput } from 'react-native';
+import {StyleSheet, View, Text, Picker } from 'react-native';
 
 
 export default class App extends Component {
 
   state = {
-    nome: ''
+    item: ''
   }
 
   componentDidMount(){
@@ -16,15 +16,16 @@ export default class App extends Component {
     const {state} = this;
     return (
       <View >
-        <TextInput 
-          keyboardType="default"
-          maxLength={20}
-          editable={true}
-          multiline={true}
-          numberOfLines={4}
-          style={{borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(text) => { this.setState({nome: text}) }}
-          value={state.nome}  />
+        <Text>{state.item}</Text>
+        <Picker
+          style={{height: 50, width: 150}}
+          selectedValue={state.item}
+          onValueChange={(itemValue, itemIndex) => {this.setState({item: itemValue})}}
+        >
+          <Picker.Item label="JavaScript" value="js" />
+          <Picker.Item label="Python" value="py" />
+          <Picker.Item label="Ruby" value="rb" />
+        </Picker>
       </View>
     );
   }
