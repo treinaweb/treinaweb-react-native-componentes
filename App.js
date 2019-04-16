@@ -1,33 +1,17 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Button, Modal } from 'react-native';
+import {StyleSheet, View } from 'react-native';
 
+import { WebView } from 'react-native-webview'; 
 
 export default class App extends Component {
-  state = {
-    isModalOpen: false
-  }
+
   componentDidMount(){
     
   }
 
   render() {
-    const {state} = this;
     return (
-      <View>
-        <Button title="Abrir" onPress={() => this.setState({isModalOpen: true})} />
-
-        <Modal
-          animationType="slide"
-          visible={state.isModalOpen}
-          transparent={false}
-          onShow={() => {}}
-          onRequestClose={() => {}}
-          >
-          <View>
-            <Button title="Fechar" onPress={() => this.setState({isModalOpen: false})} />
-          </View>
-        </Modal>
-      </View>
+      <WebView source={{uri: 'https://treinaweb.com.br'}} />
     );
   }
 }
