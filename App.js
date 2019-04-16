@@ -1,29 +1,33 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, TextInput, ScrollView } from 'react-native';
+import {StyleSheet, View, Button, Modal } from 'react-native';
 
 
 export default class App extends Component {
+  state = {
+    isModalOpen: false
+  }
   componentDidMount(){
     
   }
 
   render() {
+    const {state} = this;
     return (
-      <ScrollView>
-        <TextInput placeholder="A" style={styles.input} />
-        <TextInput placeholder="B" style={styles.input} />
-        <TextInput placeholder="C" style={styles.input} />
-        <TextInput placeholder="D" style={styles.input} />
-        <TextInput placeholder="E" style={styles.input} />
-        <TextInput placeholder="F" style={styles.input} />
-        <TextInput placeholder="G" style={styles.input} />
-        <TextInput placeholder="H" style={styles.input} />
-        <TextInput placeholder="I" style={styles.input} />
-        <TextInput placeholder="J" style={styles.input} />
-        <TextInput placeholder="K" style={styles.input} />
-        <TextInput placeholder="L" style={styles.input} />
-        <TextInput placeholder="M" style={styles.input} />
-      </ScrollView>
+      <View>
+        <Button title="Abrir" onPress={() => this.setState({isModalOpen: true})} />
+
+        <Modal
+          animationType="slide"
+          visible={state.isModalOpen}
+          transparent={false}
+          onShow={() => {}}
+          onRequestClose={() => {}}
+          >
+          <View>
+            <Button title="Fechar" onPress={() => this.setState({isModalOpen: false})} />
+          </View>
+        </Modal>
+      </View>
     );
   }
 }
@@ -34,11 +38,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  input: {
-    borderWidth: 1,
-    borderColor:  'gray',
-    width: 200,
-    height: 60
   }
 });
