@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, SafeAreaView } from 'react-native';
+import {StyleSheet, View, TextInput, ScrollView } from 'react-native';
 
 
 export default class App extends Component {
@@ -9,9 +9,21 @@ export default class App extends Component {
 
   render() {
     return (
-      <SafeAreaView>
-        <Text>TreinaWeb</Text>
-      </SafeAreaView>
+      <ScrollView>
+        <TextInput placeholder="A" style={styles.input} />
+        <TextInput placeholder="B" style={styles.input} />
+        <TextInput placeholder="C" style={styles.input} />
+        <TextInput placeholder="D" style={styles.input} />
+        <TextInput placeholder="E" style={styles.input} />
+        <TextInput placeholder="F" style={styles.input} />
+        <TextInput placeholder="G" style={styles.input} />
+        <TextInput placeholder="H" style={styles.input} />
+        <TextInput placeholder="I" style={styles.input} />
+        <TextInput placeholder="J" style={styles.input} />
+        <TextInput placeholder="K" style={styles.input} />
+        <TextInput placeholder="L" style={styles.input} />
+        <TextInput placeholder="M" style={styles.input} />
+      </ScrollView>
     );
   }
 }
@@ -22,5 +34,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor:  'gray',
+    width: 200,
+    height: 60
   }
 });
