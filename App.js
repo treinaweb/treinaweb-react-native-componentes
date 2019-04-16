@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Button} from 'react-native';
+import {StyleSheet, View, Text, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback } from 'react-native';
 
 
 export default class App extends Component {
@@ -10,7 +10,23 @@ export default class App extends Component {
   render() {
     return (
       <View >
-        <Button title="CLICK ME" color="red" onPress={() => {}} />
+        <TouchableHighlight onPress={() => {}} underlayColor="green">
+          <Text style={styles.button}>TouchableHighlight</Text>
+        </TouchableHighlight>
+
+        <TouchableOpacity  onPress={() => {}} >
+          <Text style={styles.button}>TouchableOpacity</Text>
+        </TouchableOpacity>
+
+        <TouchableNativeFeedback  onPress={() => {}} >
+          <View>
+            <Text>TouchableNativeFeedback</Text>
+          </View>
+        </TouchableNativeFeedback>
+
+        <TouchableWithoutFeedback  onPress={() => {}}  >
+          <Text style={styles.button}>TouchableWithoutFeedback</Text>
+        </TouchableWithoutFeedback>
       </View>
     );
   }
@@ -22,5 +38,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  button: {
+    backgroundColor: 'red',
+    color: 'white',
+    width: 300,
+    height: 60
   }
 });
