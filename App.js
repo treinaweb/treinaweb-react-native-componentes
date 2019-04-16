@@ -1,32 +1,34 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback } from 'react-native';
+import {StyleSheet, View, Text } from 'react-native';
 
 
 export default class App extends Component {
+  state = {
+    counter: 0
+  }
+
   componentDidMount(){
     
   }
 
+  handleCounter = ()=>{
+    this.setState(({counter}) => {
+      return {counter: counter+1};
+    })
+  }
+
   render() {
+    const {state} = this;
     return (
-      <View >
-        <TouchableHighlight onPress={() => {}} underlayColor="green">
-          <Text style={styles.button}>TouchableHighlight</Text>
-        </TouchableHighlight>
+      <View style={styles.container}
+        onStartShouldSetResponder={() => true}
+        onMoveShouldSetResponder={() => true}
 
-        <TouchableOpacity  onPress={() => {}} >
-          <Text style={styles.button}>TouchableOpacity</Text>
-        </TouchableOpacity>
-
-        <TouchableNativeFeedback  onPress={() => {}} >
-          <View>
-            <Text>TouchableNativeFeedback</Text>
-          </View>
-        </TouchableNativeFeedback>
-
-        <TouchableWithoutFeedback  onPress={() => {}}  >
-          <Text style={styles.button}>TouchableWithoutFeedback</Text>
-        </TouchableWithoutFeedback>
+        onResponderGrant={this.handleCounter}
+        onResponderMove={this.handleCounter}
+        onResponderRelease={this.handleCounter}
+      >
+        <Text>Counter: {state.counter}</Text>
       </View>
     );
   }
