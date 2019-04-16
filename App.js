@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, Picker } from 'react-native';
+import {StyleSheet, View, Text, Slider } from 'react-native';
 
 
 export default class App extends Component {
 
   state = {
-    item: ''
+    value: 10
   }
 
   componentDidMount(){
@@ -16,16 +16,13 @@ export default class App extends Component {
     const {state} = this;
     return (
       <View >
-        <Text>{state.item}</Text>
-        <Picker
-          style={{height: 50, width: 150}}
-          selectedValue={state.item}
-          onValueChange={(itemValue, itemIndex) => {this.setState({item: itemValue})}}
-        >
-          <Picker.Item label="JavaScript" value="js" />
-          <Picker.Item label="Python" value="py" />
-          <Picker.Item label="Ruby" value="rb" />
-        </Picker>
+        <Text>{state.value}</Text>
+        <Slider 
+          onValueChange={(value) => {this.setState({value})}}
+          value={state.state}
+          minimumValue={5} 
+          maximumValue={20} 
+          step={5}  />
       </View>
     );
   }
