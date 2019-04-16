@@ -1,24 +1,16 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Switch} from 'react-native';
+import {StyleSheet, View, Button} from 'react-native';
 
 
 export default class App extends Component {
-
-  state = {
-    isActive: false
-  }
-
   componentDidMount(){
     
   }
 
   render() {
-    const {state} = this;
     return (
       <View >
-        <Switch 
-          onValueChange={(isActive) => { this.setState({isActive}) }}
-          value={state.isActive}  />
+        <Button title="CLICK ME" color="red" onPress={() => {}} />
       </View>
     );
   }
