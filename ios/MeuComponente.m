@@ -15,6 +15,7 @@
 @implementation MeuComponente : UIView  {
 
   RCTEventDispatcher *_eventDispatcher;
+  UIView *_childView;
   
 }
 
@@ -22,9 +23,18 @@
 {
   if ((self = [super init])) {
     _eventDispatcher = eventDispatcher;
+    _childView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    _childView.backgroundColor = [UIColor redColor];
   }
     
   return self;
+}
+
+- (void)layoutSubviews
+{
+  [super layoutSubviews];
+  _childView.frame = self.bounds;
+  [self addSubview:_childView];
 }
 
 @end
