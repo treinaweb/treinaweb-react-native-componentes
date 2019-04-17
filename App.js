@@ -3,6 +3,7 @@ import {Platform, StyleSheet, Text, View, ScrollView, RefreshControl} from 'reac
 
 import {ListsService} from './app/services/ListsService';
 import ListsView from './app/views/ListsView';
+import List from './app/components/List';
 
 export default class App extends Component {
   state = {
@@ -31,12 +32,15 @@ export default class App extends Component {
     const {state} = this;
     return (
       <View style={styles.container}>
+      {/*
         <ScrollView refreshControl={<RefreshControl
                                         refreshing={state.isLoading}
                                         onRefresh={this.getLists}
                                         />}>
           <ListsView lists={state.lists} onRemove={this.removeList} />
         </ScrollView>
+        */}
+        <List />
       </View>
     );
   }
