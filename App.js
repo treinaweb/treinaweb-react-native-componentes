@@ -21,6 +21,12 @@ export default class App extends Component {
     return lists;
   }
 
+  removeList = (listToRemove) => {
+    const lists = this.state.lists.filter(list => list.id !== listToRemove.id);
+    this.setState({lists});
+    ListsService.remove(listToRemove.id);
+  }
+
   render() {
     const {state} = this;
     return (
@@ -29,7 +35,7 @@ export default class App extends Component {
                                         refreshing={state.isLoading}
                                         onRefresh={this.getLists}
                                         />}>
-          <ListsView lists={state.lists} />
+          <ListsView lists={state.lists} onRemove={this.removeList} />
         </ScrollView>
       </View>
     );
