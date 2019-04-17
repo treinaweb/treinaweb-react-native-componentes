@@ -6,6 +6,7 @@ import SimpleList from '../components/SimpleList';
 class ListsView extends Component{
     static defaultProps = {
         lists: [],
+        onSelect: () => {},
         onRemove: () => {}
     }
 
@@ -21,7 +22,7 @@ class ListsView extends Component{
                 <FlatList
                     data={lists}
                     keyExtractor={this.keyExtractor}
-                    renderItem={({item}) => <SimpleList list={item} onRemove={this.props.onRemove} />}
+                    renderItem={({item}) => <SimpleList list={item} onRemove={this.props.onRemove} onSelect={() => {this.props.onSelect(item)}} />}
                     numColumns={3}
                 />
             </View>

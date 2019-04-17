@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import {View, TextInput, Image, TouchableHighlight, Clipboard, Button, FlatList} from 'react-native';
+import { SafeAreaView, TouchableHighlight, View, TextInput, Image, Button, FlatList, ScrollView, Clipboard } from 'react-native';
 
 import ListItem from './ListItem';
 
 class List extends Component{
     static defaultProps = {
-        list: {items: []}
+        list: {items: []},
+        onActionDone: () => {}
     }
     state = {
         list: {items: []},
@@ -67,8 +68,9 @@ class List extends Component{
             {list} = state,
             picture = list.picture || 'http://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder-350x350.png';
         return (
-            <View style={{flex:1}} >
-                <View style={{flex: 1}} >
+            <SafeAreaView style={{flex:1}} >
+                <Button title="< Voltar" onPress={() => this.props.onActionDone(this.props.list)} />
+                <ScrollView style={{flex: 1}} >
                     <TextInput 
                         style={{height: 40, borderColor: 'gray', borderWidth: 1, fontSize: 20, fontWeight: 'bold'}}
                         placeholder="Titulo"
@@ -80,7 +82,7 @@ class List extends Component{
                             <Image source={{uri: picture}} style={{width: 100, height: 100, marginRight: 10}} />
                         </TouchableHighlight>
                         <TextInput
-                            style={{borderColor: 'gray', borderWidth: 1, padding: 5}}
+                            style={{borderColor: 'gray', borderWidth: 1, padding: 5, flex: 1}}
                             placeholder="Descricao"
                             onChangeText={(text) => this.updateList('description', text)}
                             value={list.description}
@@ -103,8 +105,9 @@ class List extends Component{
                         keyExtractor={this.keyExtractor}
                         renderItem={({item}) => <ListItem item={item} onUpdate={this.updateListItem} onRemove={this.removeListItem} />}
                     />
-                </View>
-            </View>
+                </ScrollView>
+                <Button title="Salvar" onPress={() => {this.props.onActionDone(list)}} />
+            </SafeAreaView>
         )
     }
 }
