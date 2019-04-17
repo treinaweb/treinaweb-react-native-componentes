@@ -1,16 +1,13 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text } from 'react-native';
 
+import MeuComponenteView from './native-components/MeuComponenteNativeView';
+
 export default class App extends Component {
-
-  componentDidMount(){
-    
-  }
-
   render() {
     return (
       <View style={styles.container} >
-        
+        <MeuComponenteView style={{width: 100, height: 100}} />
       </View>
     );
   }

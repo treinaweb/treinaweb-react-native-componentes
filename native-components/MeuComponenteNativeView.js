@@ -10,7 +10,3 @@ export default class MeuComponenteView extends Component {
     return <MeuComponente {...this.props} />
   }
 }
-
-MeuComponenteView.propTypes = {
-  exampleProp: React.PropTypes.string
-}
