@@ -3,6 +3,7 @@
 package com.meuapp.meucomponente;
 
 import android.view.View;
+import android.graphics.Color;
 
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
@@ -11,6 +12,8 @@ import com.facebook.react.uimanager.annotations.ReactProp;
 
 public class MeuComponenteManager extends SimpleViewManager<View> {
     public static final String REACT_CLASS = "MeuComponente";
+
+    private View view;
 
     @Override
     public String getName() {
@@ -23,7 +26,9 @@ public class MeuComponenteManager extends SimpleViewManager<View> {
     public View createViewInstance(ThemedReactContext context){
         // Create a view here
         // https://facebook.github.io/react-native/docs/native-components-android.html#2-implement-method-createviewinstance
-        return new View(context);
+        view = new View(context);
+        view.setBackgroundColor(Color.BLUE);
+        return view;
     }
 
     @ReactProp(name = "exampleProp")

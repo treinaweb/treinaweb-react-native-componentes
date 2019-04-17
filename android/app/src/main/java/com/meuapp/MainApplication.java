@@ -2,6 +2,8 @@ package com.meuapp;
 
 import android.app.Application;
 
+import com.meuapp.meucomponente.MeuComponentePackage;
+
 import com.facebook.react.ReactApplication;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.facebook.react.ReactNativeHost;
@@ -24,7 +26,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNCWebViewPackage()
+            new RNCWebViewPackage(),
+            new MeuComponentePackage()
       );
     }
 
