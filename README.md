@@ -1,5 +1,5 @@
 
-# TreinaWeb: curso ["React Native - Componentes"](https://www.treinaweb.com.br/curso/)
+# TreinaWeb: curso ["React Native - Componentes"](https://www.treinaweb.com.br/curso/react-native-componentes-nativos)
 
 
 
